@@ -1,1 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rishika & Priyanshu | Engagement Invitation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #fff7fb, #fff1f2, #fff7ed);
+      color: #4a2c2a;
+    }
+    .container { width: min(1100px, 92%); margin: auto; }
+    .section { padding: 60px 0; }
+    .card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      padding: 24px;
+    }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #fff;
+      color: #d63384;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    h2 {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 40px);
+      color: #be185d;
+      margin-bottom: 10px;
+    }
+    .lead {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #6b4f4f;
+      margin-bottom: 24px;
+    }
+    .subtext {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      text-align: center;
+      line-height: 1.7;
+      color: #7c5c5c;
+    }
+    .btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    button, .link-btn {
+      border: none;
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .primary { background: #db2777; color: white; }
+    .secondary {
+      background: white;
+      color: #be185d;
+      border: 1px solid #f3c4d8;
+    }
+    .hero-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      display: block;
+    }
+    .scratch-wrap { max-width: 650px; margin: auto; }
+    .scratch-card {
+      position: relative;
+      height: 240px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffe4ef, #ffe9d6);
+      box-shadow: inset 0 8px 24px rgba(0,0,0,0.05);
+    }
+    .scratch-hidden {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 16px;
+    }
+    .scratch-hidden h3 {
+      font-size: clamp(28px, 4vw, 40px);
+      color: #be185d;
+      margin: 8px 0;
+    }
+    #scratchCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .count-box {
+      text-align: center;
+      padding: 24px 16px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+    .count-box .num {
+      font-size: 44px;
+      font-weight: bold;
+      color: #be185d;
+    }
+    .count-box .label {
+      margin-top: 8px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7c5c5c;
+    }
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      border-radius: 24px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+    .footer-box {
+      text-align: center;
+      background: linear-gradient(90deg, #db2777, #ec4899);
+      color: white;
+      border-radius: 28px;
+      padding: 36px 24px;
+      box-shadow: 0 20px 36px rgba(219,39,119,0.25);
+    }
+    .footer-box h2 { color: white; margin-top: 12px; }
+    .footer-box p {
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+    @media (max-width: 900px) {
+      .hero, .venue-grid, .gallery { grid-template-columns: 1fr; }
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+      .hero { min-height: auto; padding-top: 30px; }
+      .gallery img { height: 280px; }
+    }
+    @media (max-width: 520px) {
+      .count-box .num { font-size: 34px; }
+      .gallery img { height: 240px; }
+      .section { padding: 42px 0; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
 
+  <div class="container">
+    <section class="section hero">
+      <div>
+        <div class="badge">With the blessings of Lord Ganesha</div>
+        <h1>You are invited to the Engagement of <span style="color:#db2777;">Rishika</span> & <span style="color:#db2777;">Priyanshu</span></h1>
+        <p class="lead">A beautiful beginning, a joyful occasion, and a warm invitation for you to celebrate this special day with our family.</p>
+        <div class="btns">
+          <button class="primary" id="musicBtn" onclick="toggleMusic()">Play Music</button>
+          <a class="link-btn secondary" href="#scratch">Reveal the Date</a>
+        </div>
+      </div>
+      <div>
+        <img class="hero-img" src="image/ganesh.png" alt="Lord Ganesha">
+      </div>
+    </section>
+
+    <section class="section" id="scratch">
+      <h2>Scratch to Reveal the Date</h2>
+      <p class="subtext">Rub the card to reveal the engagement date and time.</p>
+      <div class="scratch-wrap card">
+        <div class="scratch-card">
+          <div class="scratch-hidden">
+            <div style="font-size:14px; letter-spacing:3px; text-transform:uppercase; color:#7c5c5c;">Engagement Date</div>
+            <h3>10 July 2026 • Friday</h3>
+            <div style="font-size:22px; color:#9d174d; font-weight:bold;">7:00 PM</div>
+          </div>
+          <canvas id="scratchCanvas"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Countdown to the Celebration</h2>
+      <p class="subtext">Every second brings us closer to their special evening.</p>
+      <div class="countdown">
+        <div class="count-box"><div class="num" id="days">00</div><div class="label">Days</div></div>
+        <div class="count-box"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
+        <div class="count-box"><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
+        <div class="count-box"><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Venue</h2>
+      <p class="subtext">We would be delighted to celebrate this beautiful occasion with you.</p>
+      <div class="venue-grid">
+        <div class="card">
+          <div style="display:inline-block; background:#ffe4ef; color:#be185d; padding:8px 14px; border-radius:999px; font-size:14px; margin-bottom:16px;">Event Location</div>
+          <h3 style="font-size:32px; margin:0 0 12px; color:#4a2c2a;">Rajashree Banquet Hall</h3>
+          <p style="font-size:18px; color:#6b4f4f; line-height:1.7;">Rajshree Anandnagar</p>
+          <a class="link-btn primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar" style="margin-top:16px;">Open in Google Maps</a>
+        </div>
+        <div>
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rajashree%20Banquet%20Hall%20Rajshree%20Anandnagar&z=15&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Cute Couple Moments</h2>
+      <p class="subtext">A little gallery full of smiles, warmth, and lovely memories.</p>
+      <div class="gallery">
+        <img src="image/image1.png" alt="Couple photo 1">
+        <img src="image/image2.png" alt="Couple photo 2">
+        <img src="image/image3.png" alt="Couple photo 3">
+        <img src="image/image4.png" alt="Couple photo 4">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="footer-box">
+        <div style="font-size:13px; letter-spacing:3px; text-transform:uppercase; opacity:0.9;">With love from our family</div>
+        <h2>Please join us and bless the couple</h2>
+        <p>Your presence will make this occasion even more joyful and memorable for all of us.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const targetDate = new Date("2026-07-10T19:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").innerText = String(days).padStart(2, "0");
+      document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const audio = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (!isPlaying) {
+        audio.play();
+        isPlaying = true;
+        musicBtn.innerText = "Pause Music";
+      } else {
+        audio.pause();
+        isPlaying = false;
+        musicBtn.innerText = "Play Music";
+      }
+    }
+
+    const canvas = document.getElementById("scratchCanvas");
+    const ctx = canvas.getContext("2d");
+    let isDrawing = false;
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
+      const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+      gradient.addColorStop(0, "#f9a8d4");
+      gradient.addColorStop(1, "#fdba74");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, rect.width, rect.height);
+
+      ctx.fillStyle = "rgba(255,255,255,0.35)";
+      for (let i = 0; i < 80; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.globalCompositeOperation = "destination-out";
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    function scratch(x, y) {
+      const rect = canvas.getBoundingClientRect();
+      ctx.beginPath();
+      ctx.arc(x - rect.left, y - rect.top, 22, 0, Math.PI * 2);
+      ctx.fill();
+
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+      let transparent = 0;
+
+      for (let i = 3; i < imageData.length; i += 4) {
+        if (imageData[i] === 0) transparent++;
+      }
+
+      const cleared = transparent / (imageData.length / 4);
+      if (cleared > 0.42) {
+        canvas.style.display = "none";
+      }
+    }
+
+    canvas.addEventListener("pointerdown", (e) => {
+      isDrawing = true;
+      scratch(e.clientX, e.clientY);
+    });
+
+    canvas.addEventListener("pointermove", (e) => {
+      if (!isDrawing) return;
+      scratch(e.clientX, e.clientY);
+    });
+
+    ["pointerup", "pointerleave"].forEach(type => {
+      canvas.addEventListener(type, () => {
+        isDrawing = false;
+      });
+    });
+  </script>
+</body>
+</html>
